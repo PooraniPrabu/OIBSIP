@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image:url('sum.jpg');
+        }
+        .calculator {
+            width: 250px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #0d0e0f;
+            color:#ceced9;
+            background-color:rgb(34, 41, 52);
+            border-radius: 20px;
+            box-shadow: 0px rgba(200, 203, 203, 0.725);
+            
+        }
+        input[type="text"] {
+            width: 90%;
+            border-radius: 30px;
+            font-size: 24px;
+            padding: 10px;
+            margin-bottom: 10px;
+            color:aliceblue;
+        }
+        button {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            margin: 5px;
+            cursor: pointer;
+            color:rgb(62, 8, 42);
+            background-color:rgb(236, 231, 231);
+            border-radius:20px;
+        
+        }
+        .calculateResult{
+            background-color:rgb(255, 153, 0);
+
+        }
+        .clearDisplay{
+            background-color:aqua
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h3>CASIO fx-900MS</h3>
+        <input type="text" id="display" disabled>
+    
+        <table>
+            <tr>
+                <td><button onclick="appendToDisplay('*')">*</button>
+                <td><button onclick="appendToDisplay('/')">/</button></td>
+                <td><button onclick="appendToDisplay('.')">.</button></td>
+                <td><button class="clearDisplay" onclick ="clearDisplay('')">C</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="appendToDisplay('7')">7</button></td>
+                <td><button onclick="appendToDisplay('8')">8</button></td>
+                <td><button onclick="appendToDisplay('9')">9</button></td>
+                <td><button onclick="appendToDisplay('%')">%</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="appendToDisplay('4')">4</button></td>
+                <td><button onclick="appendToDisplay('5')">5</button></td>
+                <td><button onclick="appendToDisplay('6')">6</button></td>
+                <td><button onclick="appendToDisplay('+')">+</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="appendToDisplay('1')">1</button></td>
+                <td><button onclick="appendToDisplay('2')">2</button></td>
+                <td><button onclick="appendToDisplay('3')">3</button></td>
+                <td><button onclick="appendToDisplay('-')">-</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="appendToDisplay('(')">(</button></td>
+                <td><button onclick="appendToDisplay('0')">0</button></td>
+                <td><button onclick="appendToDisplay(')')">)</button></td>
+                <td><button class="calculateResult" onclick="calculateResult('=')">=</button></td>
+                <td>
+            </tr>
+            <tr>
+                
+        </table>
+    </div>
+
+    <script>
+        function appendToDisplay(value) {
+            document.getElementById("display").value += value;
+        
+        }
+
+
+        function clearDisplay() {
+            document.getElementById("display").value = "";
+        }
+
+        function calculateResult() {
+            try {
+                const expression = document.getElementById("display").value;
+                const result = eval(expression);
+                document.getElementById("display").value = result;
+            } catch (error) {
+                document.getElementById("display").value = "Error";
+            }
+        }
+    </script>
+</body>
+</html>
